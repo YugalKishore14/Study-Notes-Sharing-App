@@ -1,0 +1,74 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px;
+    box-shadow: 0 1px 3px -2px #000;
+    margin-bottom: 1px;
+    background: white;
+    height: 10vh;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #ce5b5b;
+}
+
+.navbar h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(43, 32, 32);
+}
+
+.navbar h2 span {
+    color: #ff4d4d;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo {
+    width: 80px;
+}
+
+.nav-profile {
+    width: 45px;
+}
+
+@media(max-width:800px) {
+    .navbar {
+        padding: 5px 22px;
+    }
+
+    .nav-logo {
+        width: 50px;
+    }
+
+    .nav-profile {
+        width: 40px;
+        display: none;
+    }
+
+    .navbar h2 {
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(43, 32, 32);
+    }
+
+    .navbar h2 span {
+        color: #ff4d4d;
+    }
+
+}
