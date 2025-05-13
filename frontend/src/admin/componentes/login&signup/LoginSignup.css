@@ -63,6 +63,11 @@ p span {
     cursor: pointer;
 }
 
+.container button:hover {
+    background: #c54e4e;
+    color: white;
+}
+
 .alredy-login {
     margin-top: 20px;
     color: #5c5c5c;
@@ -73,6 +78,10 @@ p span {
 .alredy-login span {
     color: #ff4141;
     font-weight: 600;
+}
+
+.alredy-login span:hover {
+    color: #c54e4e;
 }
 
 .agree {
