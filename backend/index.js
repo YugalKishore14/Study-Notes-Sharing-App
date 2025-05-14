@@ -7,8 +7,30 @@ const cors = require("cors");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
+// import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+
+
+
+// Required if using ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from Vite build
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
+
+
 
 // Middleware
 app.use(express.json());
