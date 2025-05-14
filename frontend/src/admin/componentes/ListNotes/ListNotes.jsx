@@ -6,7 +6,7 @@ const ListNotes = () => {
     const [allnotes, setAllNotes] = useState([]);
 
     const fetchInfo = async () => {
-        await fetch('http://localhost:4000/allnotes')
+        await fetch('https://study-notes-sharing-app-backend.onrender.com/allnotes')
             .then((res) => res.json())
             .then((data) => {
                 setAllNotes(data);
@@ -18,7 +18,7 @@ const ListNotes = () => {
     }, []);
 
     const remove_product = async (id) => {
-        await fetch('http://localhost:4000/removenotes', {
+        await fetch('https://study-notes-sharing-app-backend.onrender.com/removenotes', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

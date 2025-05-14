@@ -25,7 +25,7 @@ const AddNotes = () => {
         let formData = new FormData();
         formData.append('notes', image);
 
-        let response = await fetch('http://localhost:4000/upload', {
+        let response = await fetch('https://study-notes-sharing-app-backend.onrender.com/upload', {
             method: 'POST',
             headers: { Accept: 'application/json' },
             body: formData
@@ -40,7 +40,7 @@ const AddNotes = () => {
                 subject: productDetails.subject
             };
 
-            let productResponse = await fetch('http://localhost:4000/addnotes', {
+            let productResponse = await fetch('https://study-notes-sharing-app-backend.onrender.com/addnotes', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
