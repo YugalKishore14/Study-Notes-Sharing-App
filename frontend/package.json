@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "cp public/_redirects build/_redirects"
+    "postbuild": "cp public/_redirects dist/_redirects"
   },
   "dependencies": {
     "react": "^19.1.0",
