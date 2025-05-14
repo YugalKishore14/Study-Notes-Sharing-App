@@ -19,7 +19,8 @@ const PORT = process.env.PORT || 5000;
 
 // CORRECT CORS SETUP BEFORE ROUTES
 app.use(cors({
-    origin: 'http://localhost:5173',
+    // origin: 'http://localhost:5173',
+    origin: 'https://study-notes-sharing-app-backend.onrender.com',
     credentials: true
 }));
 
