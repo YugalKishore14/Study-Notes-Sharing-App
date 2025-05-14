@@ -7,8 +7,6 @@ const cors = require("cors");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { fileURLToPath } = require("url");
-// Required if using ES modules
 
 import path from 'path';
 import { fileURLToPath } from 'url';
