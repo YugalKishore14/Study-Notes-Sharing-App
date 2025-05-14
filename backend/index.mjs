@@ -111,7 +111,8 @@ app.post('/api/login', async (req, res) => {
 
 app.post('/api/upload', upload.single('notes'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
-    const imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+    // const imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+    const imageUrl = `${process.env.BASE_URL}/images/${req.file.filename}`;
     res.json({ success: true, image_url: imageUrl });
 });
 
