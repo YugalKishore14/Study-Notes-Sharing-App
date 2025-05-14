@@ -78,7 +78,8 @@ const ListNotes = () => {
 
     const fetchInfo = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/allnotes');
+            // http://localhost:5000/api/allnotes
+            const response = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/allnotes');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -95,7 +96,8 @@ const ListNotes = () => {
 
     const remove_product = async (id) => {
         try {
-            await fetch('http://localhost:5000/api/removenotes', {
+            // http://localhost:5000/api/removenotes
+            await fetch('https://study-notes-sharing-app-backend.onrender.com/api/removenotes', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

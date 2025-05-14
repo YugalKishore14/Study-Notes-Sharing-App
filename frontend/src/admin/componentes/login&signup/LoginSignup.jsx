@@ -36,7 +36,8 @@ function LoginSignUp() {
         }
 
         try {
-            const res = await fetch('http://localhost:5000/api/login', {
+            // http://localhost:5000/api/login
+            const res = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +65,8 @@ function LoginSignUp() {
         }
 
         try {
-            const res = await fetch('http://localhost:5000/api/signup', {
+            // http://localhost:5000/api/signup
+            const res = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
