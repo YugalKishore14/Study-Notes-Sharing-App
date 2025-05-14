@@ -17,28 +17,27 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORRECT CORS SETUP BEFORE ROUTES
+//  CORS Setup (Localhost + Render frontend दोनों के लिए)
 app.use(cors({
-    // origin: 'http://localhost:5173',
-    origin: 'https://study-notes-sharing-app-backend.onrender.com',
+    origin: ['http://localhost:5173', 'https://study-notes-sharing-app-frontend.onrender.com'],
     credentials: true
 }));
 
-// Middleware
+//  Middleware
 app.use(express.json());
 
-// MongoDB Connection
+//  MongoDB Connection
 mongoose.connect(process.env.DATABASE_URL, {})
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.error("MongoDB Connection Error:", err));
 
-// Upload folder
+//  Upload folder ensure
 const uploadFolder = path.join(__dirname, 'upload/images');
 if (!fs.existsSync(uploadFolder)) {
     fs.mkdirSync(uploadFolder, { recursive: true });
 }
 
-// Multer config
+// Multer Storage
 const storage = multer.diskStorage({
     destination: uploadFolder,
     filename: (req, file, cb) => {
@@ -47,10 +46,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Serve uploaded images
+//  Static serve uploaded images
 app.use('/images', express.static(uploadFolder));
 
-// Mongo Schemas
+//  Schemas
 const counterSchema = new mongoose.Schema({ _id: String, seq: { type: Number, default: 0 } });
 const Counter = mongoose.model('Counter', counterSchema);
 
@@ -73,8 +72,8 @@ const userSchema = new mongoose.Schema({
 });
 const Users = mongoose.model('Users', userSchema);
 
-// Routes
-app.get('/', (req, res) => res.send('Study Notes Sharing App Running'));
+//  Routes
+app.get('/api', (req, res) => res.send('API is running...'));
 
 app.post('/api/signup', async (req, res) => {
     try {
@@ -146,6 +145,15 @@ app.get('/api/allnotes', async (req, res) => {
     }
 });
 
+app.get('/api/newnotes', async (req, res) => {
+    try {
+        const notes = await Notes.find({}).sort({ date: -1 }).limit(8);
+        res.json(notes);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error fetching new notes' });
+    }
+});
+
 app.get('/api/download/:filename', (req, res) => {
     const filename = req.params.filename;
     const filePath = path.join(uploadFolder, filename);
@@ -156,13 +164,10 @@ app.get('/api/download/:filename', (req, res) => {
     }
 });
 
-app.get('/api/newnotes', async (req, res) => {
-    try {
-        const notes = await Notes.find({}).sort({ date: -1 }).limit(8);
-        res.send(notes);
-    } catch (error) {
-        res.status(500).json({ success: false, message: 'Error fetching new notes' });
-    }
+// Serve Frontend (After All Routes)
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // Start Server
