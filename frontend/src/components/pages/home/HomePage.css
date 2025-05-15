@@ -1,0 +1,74 @@
+/* src/components/pages/home/Home.css */
+
+.home__container {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Hero Section */
+.home__hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #6f86d6, #48c6ef);
+    color: white;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.home__hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Features Section */
+.home__features {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.home__features-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 1rem;
+}
+
+.home__feature-card {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Section */
+.home__cta {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e7f0fd;
+    border-radius: 1rem;
+}
+
+.home__cta-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home__btn {
+    background-color: #4285f4;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.home__btn:hover {
+    background-color: #3367d6;
+}

@@ -1,44 +1,41 @@
 .studyHeader__container {
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-between;
     align-items: center;
-    background-color: bisque;
+    background: linear-gradient(135deg, #6f86d6, #48c6ef);
     padding: 0 2rem;
     height: 10vh;
     position: relative;
     z-index: 1000;
+    color: white;
+    border-bottom: 2px solid #ddd;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .studyHeader__logo {
-    font-size: 25px;
+    font-size: 1.8rem;
     font-weight: bold;
+    color: white;
     text-decoration: none;
-    color: rgb(110, 104, 104);
-    margin-left: 6%;
-
-}
-
-.studyHeader__menu {
-    display: flex;
-    margin-left: 55%;
 }
 
 .studyHeader__menu ul {
     list-style: none;
     display: flex;
-    align-items: center;
     gap: 1.5rem;
+    margin: 0;
+    padding: 0;
 }
 
 .studyHeader__link {
     text-decoration: none;
-    color: #333;
+    color: white;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .studyHeader__link:hover {
-    color: #ff8c00;
+    color: #ffe08a;
 }
 
 .studyHeader__logout {
@@ -46,9 +43,10 @@
     background-color: #e74c3c;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .studyHeader__logout:hover {
@@ -64,11 +62,12 @@
 .studyHeader__bar {
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: white;
     margin: 4px 0;
     border-radius: 2px;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .studyHeader__hamburger {
         display: flex;
@@ -78,12 +77,13 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: bisque;
+        background: linear-gradient(135deg, #6f86d6, #48c6ef);
         width: 100%;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
         flex-direction: column;
+        border-radius: 0 0 1rem 1rem;
     }
 
     .studyHeader__menu.open {
@@ -103,15 +103,6 @@
     }
 
     .studyHeader__logo {
-        font-size: 15px;
-    }
-
-    .studyHeader__container {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .studyHeader__logout {
-        width: 23%;
+        font-size: 1.2rem;
     }
 }

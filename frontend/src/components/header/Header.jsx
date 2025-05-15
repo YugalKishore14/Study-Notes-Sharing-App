@@ -10,11 +10,16 @@ const Header = () => {
         localStorage.removeItem('auth-token');
         localStorage.removeItem('role');
         localStorage.removeItem('username');
+        setMenuOpen(false);
         navigate('/login');
     };
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
     };
 
     return (
@@ -29,9 +34,9 @@ const Header = () => {
 
             <div className={`studyHeader__menu ${menuOpen ? "open" : ""}`}>
                 <ul>
-                    <li><Link className="studyHeader__link" to="/home">Home</Link></li>
-                    <li><Link className="studyHeader__link" to="/home/notes">All-Notes</Link></li>
-                    <li><Link className="studyHeader__link" to="/home/newnotes">New-Notes</Link></li>
+                    <li><Link className="studyHeader__link" to="/home" onClick={closeMenu}>Home</Link></li>
+                    <li><Link className="studyHeader__link" to="/home/notes" onClick={closeMenu}>All-Notes</Link></li>
+                    <li><Link className="studyHeader__link" to="/home/newnotes" onClick={closeMenu}>New-Notes</Link></li>
                     <li>
                         <button className="studyHeader__logout" onClick={handleLogout}>Logout</button>
                     </li>

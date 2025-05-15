@@ -1,83 +1,97 @@
 .add-product {
     box-sizing: border-box;
-    width: 100%;
     max-width: 800px;
-    padding: 30px 50px;
-    margin: 20px 30px;
-    border-radius: 6px;
-    background: white;
+    padding: 2rem 2.5rem;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .addproduct-itemfield {
     width: 100%;
-    color: #7b7b7b;
-    font-size: 16px;
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .addproduct-itemfield p {
-    padding-top: 2%;
-    padding-bottom: 2%;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .addproduct-itemfield input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 50px;
-    border-radius: 4px;
-    padding-left: 15px;
-    border: 1px solid #c3c3c3;
+    width: 88%;
+    height: 45px;
+    padding: 0 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
     outline: none;
-    color: #7b7b7b;
-    font-family: 'Poppins';
-    font-size: 14px;
+    font-size: 0.95rem;
+    color: #333;
 }
 
 .addproduct-price {
     display: flex;
-    gap: 40px;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .add-product-selector {
-    padding: 10px;
-    width: 146px;
-    height: 50px;
-    font-size: 14px;
-    color: #7b7b7b;
-    border: 1px solid #7b7b7b8b;
-    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    width: 160px;
+    height: 45px;
+    font-size: 0.95rem;
+    color: #444;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
     cursor: pointer;
+    background: #f9f9f9;
 }
 
 .addproduct-thumnail-img {
     height: 120px;
     width: 120px;
-    border-radius: 10px;
+    border-radius: 0.75rem;
     object-fit: contain;
-    margin: 10px 0px;
-    cursor: pointer;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    padding: 5px;
 }
 
 .addproduct-btn {
-    margin-top: 10px;
-    width: 160px;
-    height: 50px;
-    border-radius: 6px;
-    background: #ff4d4d;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #4285f4;
     border: none;
-    cursor: pointer;
+    border-radius: 0.5rem;
     color: white;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .addproduct-btn:hover {
-    background: #ce5b5b;
+    background-color: #3367d6;
 }
 
-@media(max-width:800px) {
+@media (max-width: 768px) {
     .add-product {
-        width: auto;
-        padding: 30px;
-        margin: 20px;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .addproduct-price {
+        flex-direction: column;
+    }
+
+    .add-product-selector {
+        width: 100%;
+    }
+
+    .addproduct-btn {
+        width: 100%;
     }
 }
