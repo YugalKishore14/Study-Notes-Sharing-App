@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './AddNotes.css';
 import upload_area from "../../assets/upload_area.svg";
@@ -30,8 +29,8 @@ const AddNotes = () => {
         try {
             const formData = new FormData();
             formData.append('notes', image);
-            // https://study-notes-sharing-app-backend.onrender.com
-            const uploadRes = await fetch('http://localhost:5000/api/upload', {
+            // 
+            const uploadRes = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/upload', {
                 method: 'POST',
                 body: formData,
             });
@@ -48,8 +47,8 @@ const AddNotes = () => {
                 subject: productDetails.subject,
                 image: uploadData.image_url,
             };
-            // https://study-notes-sharing-app-backend.onrender.com
-            const noteRes = await fetch('http://localhost:5000/api/addnotes', {
+            // 
+            const noteRes = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/addnotes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
