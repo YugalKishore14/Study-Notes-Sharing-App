@@ -130,16 +130,15 @@
 
 
 
-
 import React, { useState } from 'react';
-import upload_area from "../../assets/upload_area.svg";
 import './AddNotes.css';
+import upload_area from "../../assets/upload_area.svg";
 
 const AddNotes = () => {
     const [image, setImage] = useState(null);
     const [productDetails, setProductDetails] = useState({
-        title: '',
-        subject: '',
+        title: "",
+        subject: ""
     });
 
     const imageHandler = (e) => {
@@ -147,17 +146,19 @@ const AddNotes = () => {
     };
 
     const changeHandler = (e) => {
-        setProductDetails(prev => ({ ...prev, [e.target.name]: e.target.value }));
+        setProductDetails(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
     };
 
     const Add_product = async () => {
         if (!image || !productDetails.title || !productDetails.subject) {
-            alert('All fields are required');
+            alert("All fields are required");
             return;
         }
 
         try {
-            // 1. Upload image to backend (Cloudinary)
             const formData = new FormData();
             formData.append('notes', image);
 
@@ -165,6 +166,7 @@ const AddNotes = () => {
                 method: 'POST',
                 body: formData,
             });
+
             const uploadData = await uploadRes.json();
 
             if (!uploadData.success) {
@@ -172,7 +174,6 @@ const AddNotes = () => {
                 return;
             }
 
-            // 2. Send note data along with Cloudinary image URL
             const newNote = {
                 title: productDetails.title,
                 subject: productDetails.subject,
@@ -191,14 +192,14 @@ const AddNotes = () => {
 
             if (noteData.success) {
                 alert('Note added successfully!');
-                setProductDetails({ title: '', subject: '' });
+                setProductDetails({ title: "", subject: "" });
                 setImage(null);
             } else {
                 alert('Failed to add note');
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Something went wrong');
+            console.error("Error:", error);
+            alert("Something went wrong");
         }
     };
 
@@ -229,7 +230,7 @@ const AddNotes = () => {
                     <img
                         src={image ? URL.createObjectURL(image) : upload_area}
                         alt="Upload preview"
-                        className="addproduct-thumnail-img"
+                        className='addproduct-thumnail-img'
                     />
                 </label>
                 <input
@@ -240,7 +241,7 @@ const AddNotes = () => {
                     onChange={imageHandler}
                 />
             </div>
-            <button onClick={Add_product} className="addproduct-btn">UPLOAD</button>
+            <button onClick={Add_product} className='addproduct-btn'>UPLOAD</button>
         </div>
     );
 };

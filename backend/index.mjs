@@ -185,19 +185,16 @@
 // });
 
 
-
-
-
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import cors from 'cors';
+import fs from 'fs';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import upload from './utils/storage.js';
+import { fileURLToPath } from 'url';
+import upload from './utils/storage.js';  // multer cloudinary storage
 
 dotenv.config();
 
@@ -207,19 +204,30 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS Setup
 app.use(cors({
     origin: ['http://localhost:5173', 'https://study-notes-sharing-app-frontend.onrender.com'],
-    credentials: true,
+    credentials: true
 }));
 
+// Middleware
 app.use(express.json());
 
 // MongoDB Connection
 mongoose.connect(process.env.DATABASE_URL, {})
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.error('MongoDB Connection Error:', err));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB Connection Error:", err));
 
-// MongoDB Schemas
+// Upload folder ensure (optional if you use Cloudinary only)
+const uploadFolder = path.join(__dirname, 'upload/images');
+if (!fs.existsSync(uploadFolder)) {
+    fs.mkdirSync(uploadFolder, { recursive: true });
+}
+
+// Static serve uploaded images (optional, not used with Cloudinary)
+app.use('/images', express.static(uploadFolder));
+
+// Mongo Schemas
 const counterSchema = new mongoose.Schema({ _id: String, seq: { type: Number, default: 0 } });
 const Counter = mongoose.model('Counter', counterSchema);
 
@@ -243,6 +251,7 @@ const userSchema = new mongoose.Schema({
 const Users = mongoose.model('Users', userSchema);
 
 // Routes
+
 app.get('/api', (req, res) => res.send('API is running...'));
 
 // Signup
@@ -281,14 +290,13 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Upload Image to Cloudinary
+// Upload Image (Cloudinary)
 app.post('/api/upload', upload.single('notes'), (req, res) => {
     if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
-    const imageUrl = req.file.path; // Cloudinary URL
-    res.json({ success: true, image_url: imageUrl });
+    res.json({ success: true, image_url: req.file.path });  // Cloudinary URL
 });
 
-// Add Note
+// Add Notes
 app.post('/api/addnotes', async (req, res) => {
     try {
         const counter = await Counter.findByIdAndUpdate(
@@ -305,7 +313,7 @@ app.post('/api/addnotes', async (req, res) => {
     }
 });
 
-// Remove Note
+// Remove Notes
 app.post('/api/removenotes', async (req, res) => {
     try {
         await Notes.findOneAndDelete({ id: req.body.id });
@@ -318,7 +326,7 @@ app.post('/api/removenotes', async (req, res) => {
 // Get All Notes
 app.get('/api/allnotes', async (req, res) => {
     try {
-        const notes = await Notes.find({}).sort({ date: -1 });
+        const notes = await Notes.find({});
         res.json(notes);
     } catch (error) {
         res.status(500).json({ success: false, message: 'Error fetching notes' });
@@ -335,23 +343,24 @@ app.get('/api/newnotes', async (req, res) => {
     }
 });
 
-
-// Download Notes
+// Download Notes (redirect to Cloudinary URL)
 app.get('/api/download/:id', async (req, res) => {
     try {
         const note = await Notes.findById(req.params.id);
-        if (!note || !note.image) {
-            return res.status(404).json({ success: false, message: 'Note not found' });
-        }
-        return res.redirect(note.image);
+        if (!note || !note.image) return res.status(404).json({ success: false, message: 'Note not found' });
+        res.redirect(note.image);
     } catch (error) {
         console.error("Download error:", error);
         res.status(500).json({ success: false, message: 'Error downloading file' });
     }
 });
 
+// Serve frontend build (if exists)
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
