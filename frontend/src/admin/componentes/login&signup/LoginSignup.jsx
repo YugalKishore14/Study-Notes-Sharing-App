@@ -36,8 +36,8 @@ function LoginSignUp() {
         }
 
         try {
-            // http://localhost:5000/api/login
-            const res = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/login', {
+            // https://study-notes-sharing-app-backend.onrender.com/api/login
+            const res = await fetch('http://localhost:5000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,8 +65,8 @@ function LoginSignUp() {
         }
 
         try {
-            // http://localhost:5000/api/signup
-            const res = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/signup', {
+            // https://study-notes-sharing-app-backend.onrender.com/api/signup
+            const res = await fetch('http://localhost:5000/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -30,8 +30,8 @@ const AddNotes = () => {
         try {
             const formData = new FormData();
             formData.append('notes', image);
-
-            const uploadRes = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/upload', {
+            // https://study-notes-sharing-app-backend.onrender.com
+            const uploadRes = await fetch('http://localhost:5000/api/upload', {
                 method: 'POST',
                 body: formData,
             });
@@ -48,8 +48,8 @@ const AddNotes = () => {
                 subject: productDetails.subject,
                 image: uploadData.image_url,
             };
-
-            const noteRes = await fetch('https://study-notes-sharing-app-backend.onrender.com/api/addnotes', {
+            // https://study-notes-sharing-app-backend.onrender.com
+            const noteRes = await fetch('http://localhost:5000/api/addnotes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
