@@ -1,0 +1,174 @@
+.LoginSignUp {
+    height: 90vh;
+    width: 100%;
+    /* background: #fce3fe; */
+    padding-top: 50px;
+    margin-bottom: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 3px solid rgb(165, 159, 159);
+    border-radius: 8px;
+    width: 440px;
+    height: auto;
+    background: white;
+    margin: auto;
+    padding: 30px 30px;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+.feild {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feild input {
+    height: 15px;
+    width: 90%;
+    border: 1px solid #c9c9c9;
+    padding: 20px;
+    outline: none;
+    font-size: 14px;
+    color: #5c5c5c;
+
+}
+
+select {
+    width: 100%;
+    font-size: 14px;
+    padding: 15px;
+}
+
+p span {
+    cursor: pointer;
+}
+
+.container button {
+    width: 436px;
+    height: 42px;
+    background: #ff4141;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background: #c54e4e;
+    color: white;
+}
+
+.alredy-login {
+    margin-top: 20px;
+    color: #5c5c5c;
+    font-size: 14px;
+    font-weight: 500px;
+}
+
+.alredy-login span {
+    color: #ff4141;
+    font-weight: 600;
+}
+
+.alredy-login span:hover {
+    color: #c54e4e;
+}
+
+.agree {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    color: #5c5c5c;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+@media(max-width:800px) {
+    .container {
+        margin: 30px auto;
+        padding: 20px 30px;
+        width: 390px;
+        height: auto;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .feild {
+        margin: 20px;
+    }
+
+    .feild input {
+        height: 15px;
+        width: 90%;
+        border: 1px solid #c9c9c9;
+        padding: 20px;
+        font-size: 12px;
+    }
+
+    .container button {
+        width: 293px;
+        height: 42px;
+        background: #ff4141;
+        color: white;
+        margin-top: 20px;
+        margin-left: 18px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+
+@media(max-width:500px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px 20px;
+        width: 90%;
+        height: auto;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .feild {
+        margin: 10px 0;
+        gap: 15px;
+    }
+
+    .feild input {
+        height: 15px;
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .container button {
+        width: 100%;
+        height: 40px;
+        margin: 15px 0 0 0;
+        font-size: 14px;
+    }
+
+    .alredy-login {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .agree {
+        font-size: 11px;
+        flex-wrap: wrap;
+    }
+}

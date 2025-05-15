@@ -1,38 +1,3 @@
-// import React from "react";
-// import './Header.css';
-// import { Link, useNavigate } from "react-router-dom";
-
-
-// const Header = () => {
-//     const navigate = useNavigate();
-//     const handleLogout = () => {
-//         localStorage.removeItem('auth-token');
-//         localStorage.removeItem('role');
-//         localStorage.removeItem('username');
-//         navigate('/');
-//     };
-//     return (
-//         <>
-//             <nav className="header">
-//                 <Link className="logo">Study Notes Sharing App</Link>
-//                 <div className="header-box">
-//                     <ul>
-//                         <li><Link className="link" to="/">Home</Link></li>
-//                         <li><Link className="link" to="/upload">Upload</Link></li>
-//                         <li><Link className="link" to="/notes">Notes</Link></li>
-//                         <li><Link className="link" to="/profile">Profile</Link></li>
-//                         <button className="btn-logout" onClick={handleLogout}>Logout</button>
-//                     </ul>
-//                 </div>
-//             </nav>
-//         </>
-//     );
-// };
-// export default Header;
-
-
-
-
 import React, { useState } from "react";
 import './Header.css';
 import { Link, useNavigate } from "react-router-dom";
@@ -45,7 +10,7 @@ const Header = () => {
         localStorage.removeItem('auth-token');
         localStorage.removeItem('role');
         localStorage.removeItem('username');
-        navigate('/');
+        navigate('/login');
     };
 
     const toggleMenu = () => {
@@ -64,15 +29,15 @@ const Header = () => {
 
             <div className={`studyHeader__menu ${menuOpen ? "open" : ""}`}>
                 <ul>
-                    <li><Link className="studyHeader__link" to="/">Home</Link></li>
-                    <li><Link className="studyHeader__link" to="/upload">Upload</Link></li>
-                    <li><Link className="studyHeader__link" to="/notes">Notes</Link></li>
-                    <li><Link className="studyHeader__link" to="/profile">Profile</Link></li>
-                    <button className="studyHeader__logout" onClick={handleLogout}>Logout</button>
+                    <li><Link className="studyHeader__link" to="/home">Home</Link></li>
+                    <li><Link className="studyHeader__link" to="/home/notes">All-Notes</Link></li>
+                    <li><Link className="studyHeader__link" to="/home/newnotes">New-Notes</Link></li>
+                    <li>
+                        <button className="studyHeader__logout" onClick={handleLogout}>Logout</button>
+                    </li>
                 </ul>
             </div>
         </nav>
-
     );
 };
 
